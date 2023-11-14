@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=0.33">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <title>Admin</title>
+  <link rel="shortcut icon" href="img/favicon.ico" />
+
+  <!-- Load font awesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <!-- Chart JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+
+  <!-- Our files -->
+  <link rel="stylesheet" href="css/admin/style.css" />
+
+  <script src="data/products.js"></script>
+
+  <script src="js/admin.js"></script>
+  <style>
+    .page-gt {
+      color: white;
+      width: 80%;
+      margin: 50px 0 150px 100px;
+    }
+
+    .page-header {
+      color: white;
+      height: 40px;
+      background: rgb(1, 247, 255);
+      line-height: 40px;
+      padding-left: 10px;
+      text-align: center;
+      font-size: 20px;
+    }
+
+    .page-info {
+      font-size: 15px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <header style="
+  text-align: center;
+">
+    <h2>Phenikaa Toeic - Admin</h2>
+  </header>
+
+  <!-- Menu -->
+  <aside class="sidebar">
+    <ul class="nav">
+      <li class="nav-title">MENU</li>
+      <li class="nav-item">
+        <a class="nav-link active"><i class="fa fa-home"></i> Trang Chủ</a>
+      <li class="nav-item">
+        <a class="nav-link"><i class="fa fa-newspaper-o"></i> Tài Khoản</a>
+      </li>
+    </ul>
+    <li class="nav-item">
+      <hr />
+    </li>
+    <li class="nav-item">
+      <a href="index.html" class="nav-link">
+        <i class="fa fa-arrow-left"></i>
+        Đăng xuất
+      </a>
+    </li>
+  </aside>
+
+  <!-- Khung hiển thị chính -->
+  <div class="main">
+    <div class="home">
+      <div class="page-gt">
+        <h4 class="page-header">Giới thiệu</h4>
+        <div class="page-info">
+          <p>
+            Web được tìm hiểu và hoàn thiện phát triển bởi các thành viên trong nhóm dựa trên các
+            tài liệu trên mạng và sự Hướng dẫn cố gắng của của mọi người
+          </p>
+          <br />
+          <p>
+            Trong bối cảnh hiện nay của môi trường kinh doanh toàn cầu, việc đạt được khả năng sử dụng tiếng Anh thành
+            thạo, đặc biệt là qua kỳ thi TOEIC (Test of English for International Communication), là một thách thức đối
+            với nhiều học viên. Vấn đề cơ bản mà chúng ta đối diện là sự thiếu hụt kiến thức và cơ hội huấn luyện hiệu
+            quả cho hai kỹ năng chính: nghe và nói trong việc chuẩn bị cho kỳ thi TOEIC. Để giải quyết tình trạng này,
+            chúng tôi đề xuất việc phát triển một ứng dụng di động tập trung vào việc hỗ trợ người học cải thiện kỹ năng
+            tiếng Anh thông qua việc học và ôn luyện TOEIC. Ứng dụng sẽ cung cấp môi trường học tập linh hoạt, hỗ trợ từ
+            cơ bản đến nâng cao, và sẽ tập trung vào việc phát triển hai kỹ năng chính: nghe và đọc, nhằm đáp ứng nhu
+            cầu đa dạng của người học trong việc chuẩn bị cho kỳ thi TOEIC.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="tintuc">
+      <table class="table-header">
+        <tr>
+        <tr>
+          <!-- Theo độ rộng của table content -->
+          <th title="Sắp xếp" style="width: 5%" onclick="sortNewsTable  ('stt')">
+            Stt <i class="fa fa-sort"></i>
+          </th>
+          <th title="Sắp xếp" style="width: 20%" onclick="sortNewsTable('email')">
+            Email <i class="fa fa-sort"></i>
+          </th>
+          <th title="Sắp xếp" style="width: 20%">
+            Mật khẩu <i class="fa fa-sort"></i>
+          </th>
+          <th title="Sắp xếp" style="width: 45%">
+            Thông tin <i class="fa fa-sort"></i>
+          </th>
+          <th style="width: 10%">Hành động</th>
+        </tr>
+      </table>
+
+      <div class="table-content"></div>
+
+      <div class="table-footer">
+        <select name="kieutimtintuc">
+          <option value="email">Tìm theo email</option>
+        </select>
+        <input type="text" placeholder="Tìm kiếm..." onkeyup="timKiemTinTuc(this)" />
+        <button onclick="document.getElementById('KhungThemTinTuc').style.transform = 'scale(1)';">
+          <i class="fa fa-plus-square"></i> Thêm tài khoản
+        </button>
+
+      </div>
+      <div id="KhungThemTinTuc" class="overlay">
+        <span class="close" onclick="this.parentElement.style.transform = 'scale(0)';">&times;</span>
+
+        <table style="margin-top: 300px;" class="overlayTable table-outline table-content table-header">
+          <tr>
+            <th colspan="2">Thêm tài khoản</th>
+          </tr>
+          <tr>
+            <td>Email:</td>
+            <td><input type="email" id="email" required autocomplete="off" /></td>
+          </tr>
+          <tr>
+            <td>Pass</td>
+            <td><input type="password" id="pass" required autocomplete="off" /></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="table-footer">
+              <button onclick="ThemTinTuc()">THÊM</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="khungSuaTinTuc" class="overlay add"></div>
+    </div>
+    <!-- // khach hang -->
+  </div>
+  <!-- // main -->
+
+  <footer></footer>
+</body>
+
+</html>
+<!-- <script>
+  function rs(){
+  localStorage.clear();
+}
+</script> -->
