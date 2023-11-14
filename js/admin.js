@@ -261,7 +261,7 @@ function addKhungSuaTinTuc(title) {
     `"></td>
         </tr>
         <tr>
-            <td>Email:</td>
+            <td>Pass:</td>
             <td><input type="text" value="` +
     tt.password +
     `"></td>
@@ -331,7 +331,7 @@ function timKiemTinTuc(inp) {
   var kieuTim = document.getElementsByName("kieutimtintuc")[0].value;
   var text = inp.value;
   // Lọc
-  var vitriKieuTim = { email: 2 };
+  var vitriKieuTim = { email: 1 };
 
   var listTr_table = document
     .getElementsByClassName("tintuc")[0]

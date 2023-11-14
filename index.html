@@ -9,28 +9,61 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin: 100px;
+            margin-top: 150px;
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
         input {
-            margin-bottom: 10px;
+            width: 60%;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid black;
+        }
+
+        .login {
+            padding-top: 10px;
+            background-color: #ffffff;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 150px;
+            margin-top: 10px;
+            padding: 10px;
+            color: black;
+            font-weight: 900;
+            border-radius: 5px;
+            border: 1px solid black;
+        }
+
+
+
+        img {
+            margin-top: 20px;
+            width: 75px;
+            height: 75px;
         }
     </style>
 </head>
 
 <body>
+    <div class="login ">
+        <img src="./369825934_706360408109692_305759962079923452_n.jpg" alt="">
+        <h2 style="margin-bottom: 30px;">ĐĂNG NHẬP</h2>
+        <form class="login1" id="loginForm">
 
-    <h2>Login</h2>
-    <form id="loginForm">
-        <label for="username">Username:</label>
-        <input type="text" id="username" required>
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" required>
-        <br>
-        <button type="button" onclick="login()">Login</button>
-    </form>
+            <input type="text" id="username" placeholder="Tài khoản" required>
+            <br>
 
+            <input type="password" id="password" placeholder="Mật khẩu" required>
+            <br>
+            <button type="button" onclick="login()"><b>Đăng nhập</b></button>
+        </form>
+    </div>
     <script>
         function login() {
             var username = document.getElementById('username').value;
